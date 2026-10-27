@@ -1,1 +1,1 @@
-{"name":"우리 가계부","short_name":"우리 가계부","start_url":"./","display":"standalone","background_color":"#f7f4ee","theme_color":"#f7f4ee","icons":[{"src":"./icon-128.png","sizes":"128x128","type":"image/png","purpose":"any maskable"}]}
+{"name":"우리 가계부","short_name":"우리 가계부","start_url":"./","display":"standalone","background_color":"#f6f8fb","theme_color":"#f6f8fb","icons":[{"src":"./icon-blue-96.png?v=1","sizes":"96x96","type":"image/png","purpose":"any"}]}
