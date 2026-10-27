@@ -329,6 +329,7 @@ render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.j
  const prefs=document.createElement('div');prefs.id='view-settings';prefs.className='app-view';
  main.querySelector('header').after(home,analysis,fixed,prefs);
  home.append(summary,calendar,day);
+ home.insertAdjacentHTML('afterbegin','<h2 class="view-heading">가계부</h2>');
  analysis.append(stats);fixed.append(repeats);prefs.append(settings);
  settings.classList.remove('hidden');
  analysis.insertAdjacentHTML('afterbegin','<h2 class="view-heading">월별 통계</h2><section class="card weekly-card"><div class="between"><h2>주간 지출 분석</h2><label class="weekly-filter"><input id="weeklyIncludeFixed" type="checkbox" checked> 고정지출 포함</label></div><div class="weekly-month"><button id="weeklyPrev" type="button" aria-label="이전 달">‹</button><strong id="weeklyMonth"></strong><button id="weeklyNext" type="button" aria-label="다음 달">›</button></div><div id="weeklyRows"></div></section>');
