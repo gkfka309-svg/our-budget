@@ -312,7 +312,7 @@ $('cloudForm').onsubmit=async e=>{e.preventDefault();cloudStatus('연결 중...'
 $('disconnect').onclick=()=>{token=null;refreshToken=null;clearInterval(poller);localStorage.removeItem('cbSession');localStorage.removeItem('coupleBudgetCloud');cfg=null;$('sbUrl').value='';$('sbKey').value='';$('room').value='';$('password').value='';cloudStatus('로그아웃했습니다. 현재 기기에는 마지막으로 동기화한 내역이 남아 있습니다.')};
 if(!cfg){$('sbUrl').value='https://sopiqwerixfobroxeafe.supabase.co';$('sbKey').value='sb_publishable_I1rRvsCqh3eVUICLQj4E_g_2Z7339zg';}
 if(cfg){$('sbUrl').value=cfg.url||'';$('sbKey').value=cfg.key||'';$('room').value=cfg.email||'';try{let session=JSON.parse(localStorage.getItem('cbSession')||'null');if(session){token=session.token;refreshToken=session.refreshToken;renew().then(ok=>{if(ok){remoteRead().then(()=>{lastSynced=JSON.parse(JSON.stringify(data));startPolling()})}else {token=null;refreshToken=null;localStorage.removeItem('cbSession');cloudStatus('로그인 기간이 만료되었습니다. 다시 로그인해 주세요.')}})}}catch{}}
-render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=6').then(reg=>{
+render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=7').then(reg=>{
  const check=()=>{if(navigator.onLine)reg.update().catch(()=>{})};
  check();
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)check()});
