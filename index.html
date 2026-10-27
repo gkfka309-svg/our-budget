@@ -63,6 +63,7 @@ async function connect(){let url=$('sbUrl').value.trim(),key=$('sbKey').value.tr
 function startPolling(){clearInterval(poller);poller=setInterval(async()=>{if(!token)return;await renew();await cloudQueue;await remoteRead();lastSynced=JSON.parse(JSON.stringify(data))},12000)}
 $('cloudForm').onsubmit=async e=>{e.preventDefault();cloudStatus('연결 중...');try{await connect()}catch(e){cloudStatus(e.message)}};
 $('disconnect').onclick=()=>{token=null;refreshToken=null;clearInterval(poller);sessionStorage.removeItem('cbSession');localStorage.removeItem('coupleBudgetCloud');cfg=null;$('sbUrl').value='';$('sbKey').value='';$('room').value='';$('password').value='';cloudStatus('로그아웃했습니다. 현재 기기에는 마지막으로 동기화한 내역이 남아 있습니다.')};
+if(!cfg){$('sbUrl').value='https://sopiqwerixfobroxeafe.supabase.co';$('sbKey').value='sb_publishable_I1rRvsCqh3eVUICLQj4E_g_2Z7339zg';}
 if(cfg){$('sbUrl').value=cfg.url||'';$('sbKey').value=cfg.key||'';$('room').value=cfg.email||'';try{let session=JSON.parse(sessionStorage.getItem('cbSession')||'null');if(session){token=session.token;refreshToken=session.refreshToken;renew().then(ok=>{if(ok){remoteRead().then(()=>{lastSynced=JSON.parse(JSON.stringify(data));startPolling()})}else cloudStatus('다시 로그인해 주세요.')})}}catch{}}
 render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
 </script></body></html>
