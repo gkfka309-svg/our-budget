@@ -1,1 +1,1 @@
-{"name":"우리 가계부","short_name":"우리 가계부","start_url":"./","display":"standalone","background_color":"#f6f8fb","theme_color":"#f6f8fb","icons":[{"src":"./icon-pig-approved-512.png?v=8","sizes":"512x512","type":"image/png","purpose":"any"}]}
+{"name":"우리 가계부","short_name":"우리 가계부","start_url":"./","display":"standalone","background_color":"#f6f8fb","theme_color":"#f6f8fb","icons":[{"src":"./pig-ios-180-v9.png","sizes":"180x180","type":"image/png","purpose":"any"}]}
