@@ -380,7 +380,7 @@ render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.j
  let finished=false;
  function done(){if(finished)return;finished=true;loader.classList.add('finished');setTimeout(()=>loader.remove(),350)}
  const start=Date.now();
- const minWait=()=>new Promise(resolve=>setTimeout(resolve,Math.max(0,450-(Date.now()-start))));
+ const minWait=()=>new Promise(resolve=>setTimeout(resolve,Math.max(0,2900-(Date.now()-start))));
  async function ready(){
   try{
    const saved=JSON.parse(localStorage.getItem('cbSession')||'null');
