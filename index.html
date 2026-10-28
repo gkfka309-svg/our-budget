@@ -293,7 +293,7 @@ const cats=['생활','식비','교통 · 차량','쇼핑','주거','통신','보
   const portion=val/total,step=portion*Math.PI*2,mid=angle+step/2;
   if(portion>=0.999999){make('circle',{cx,cy,r:radius,fill:colors[i%colors.length]})}
   else {const a=point(angle,radius),b=point(angle+step,radius);make('path',{d:'M '+cx+' '+cy+' L '+a.x+' '+a.y+' A '+radius+' '+radius+' 0 '+(step>Math.PI?1:0)+' 1 '+b.x+' '+b.y+' Z',fill:colors[i%colors.length]})}
-  if(portion>=0.05){const right=Math.cos(mid)>=0;const anchor=point(mid,radius+7);labels.push({cat,pct:(portion*100).toFixed(1)+'%',right,y:cy+Math.sin(mid)*(radius+26),anchor});}angle+=step;
+  if(portion>=0.04){const right=Math.cos(mid)>=0;const anchor=point(mid,radius+7);labels.push({cat,pct:(portion*100).toFixed(1)+'%',right,y:cy+Math.sin(mid)*(radius+26),anchor});}angle+=step;
  });
  // Spread labels vertically on each side to avoid overlapping categories.
  for(const right of [false,true]){
