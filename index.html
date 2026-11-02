@@ -581,4 +581,19 @@ function enhanceFixedMove(select){
 const fixedMoveObserver=new MutationObserver(()=>{document.querySelectorAll('.fixed-group-move').forEach(el=>{if(!el.dataset.enhanced){el.dataset.enhanced='1';enhanceFixedMove(el)}})});
 fixedMoveObserver.observe(document.getElementById('repeats'),{childList:true,subtree:true});
 document.querySelectorAll('.fixed-group-move').forEach(el=>{el.dataset.enhanced='1';enhanceFixedMove(el)});
-</script><style>.fixed-move-trigger{background:#fff;border:1px solid #d9e3ee;border-radius:8px;color:#20466b;padding:5px 9px;font:inherit;font-size:11px;min-width:75px;text-align:left}</style></body></html>
+</script><style>.fixed-move-trigger{background:#fff;border:1px solid #d9e3ee;border-radius:8px;color:#20466b;padding:5px 9px;font:inherit;font-size:11px;min-width:75px;text-align:left}</style><script>
+(()=>{
+ const input=document.getElementById('repeatStart');if(!input)return;
+ input.style.position='absolute';input.style.opacity='0';input.style.pointerEvents='none';input.style.width='1px';input.style.height='1px';
+ const trigger=document.createElement('button');trigger.type='button';trigger.className='app-native-trigger';trigger.style.width='100%';input.insertAdjacentElement('afterend',trigger);
+ const refresh=()=>{const [y,m]=(input.value||'').split('-');trigger.textContent=y&&m?y+'년 '+Number(m)+'월　▦':'시작 월 선택　▦'};
+ input.addEventListener('change',refresh);input.addEventListener('input',refresh);refresh();
+ trigger.onclick=e=>{e.preventDefault();const shade=document.createElement('div');shade.className='app-dialog-backdrop';const panel=document.createElement('div');panel.className='app-dialog';const now=new Date();let [year,month]=(input.value||`${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`).split('-').map(Number);
+ const close=()=>shade.remove();shade.onclick=e=>{if(e.target===shade)close()};
+ const render=()=>{panel.replaceChildren();const header=document.createElement('div');header.style.cssText='display:flex;justify-content:space-between;align-items:center;margin-bottom:15px';const prev=document.createElement('button');prev.textContent='‹';const title=document.createElement('strong');title.textContent=year+'년';const next=document.createElement('button');next.textContent='›';prev.onclick=()=>{year--;render()};next.onclick=()=>{year++;render()};header.append(prev,title,next);panel.append(header);
+ const grid=document.createElement('div');grid.style.cssText='display:grid;grid-template-columns:repeat(3,1fr);gap:8px';for(let m=1;m<=12;m++){const b=document.createElement('button');b.type='button';b.textContent=m+'월';b.style.cssText='padding:12px 5px;border-radius:11px;background:'+(year===Number(input.value.slice(0,4))&&m===Number(input.value.slice(5,7))?'#20466b':'#eaf0f6')+';color:'+(year===Number(input.value.slice(0,4))&&m===Number(input.value.slice(5,7))?'#fff':'#20466b');b.onclick=()=>{input.value=year+'-'+String(m).padStart(2,'0');input.dispatchEvent(new Event('input',{bubbles:true}));input.dispatchEvent(new Event('change',{bubbles:true}));close()};grid.append(b)}panel.append(grid);
+ const footer=document.createElement('div');footer.className='app-dialog-actions';footer.style.marginTop='16px';const cancel=document.createElement('button');cancel.textContent='닫기';cancel.onclick=close;footer.append(cancel);panel.append(footer)};
+ render();shade.append(panel);document.body.append(shade);
+ };
+})();
+</script></body></html>
