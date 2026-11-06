@@ -344,6 +344,13 @@ html,body,body *,button,input,select,textarea{font-family:"SUIT Variable","SUIT"
 #loanDashboard .loan-group-head span{font-size:10px!important}
 #loanDashboard .loan-group-head button{font-size:10px!important}
 #loanDashboard .loan-group-empty,#loanDashboard .loan-empty{font-size:11px!important}
+
+/* Prevent iOS date controls from exceeding their loan-form grid columns. */
+.loan-dialog form>label{min-width:0;max-width:100%;width:100%;box-sizing:border-box}
+.loan-dialog input[type="date"]{display:block;width:100%;min-width:0;max-width:100%;box-sizing:border-box;min-height:42px;padding:9px 8px;font-size:14px!important;letter-spacing:0}
+.loan-dialog input[type="date"]::-webkit-date-and-time-value{min-width:0;text-align:left}
+.loan-dialog input[type="date"]::-webkit-datetime-edit{padding:0;min-width:0}
+@media(max-width:580px){.loan-dialog input[type="date"]{font-size:14px!important;padding:9px 7px}}
 </style>
 <style>
 /* Smaller app dropdown text; keep the form layout and input fields unchanged. */
