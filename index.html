@@ -937,6 +937,49 @@ body{background:linear-gradient(165deg,#17263b,#101b2b 62%,#0d1827) fixed!import
 @keyframes auroraFloat{from{transform:translate(-6px,5px) rotate(-20deg);opacity:.72}to{transform:translate(7px,-5px) rotate(18deg);opacity:1}}
 #startupLoader .apple-loader-track{background:#3a4b60!important}
 #startupLoader .apple-loader-fill{background:#dbe4ed!important}
-/* Preserve the previously approved light dialogs and compact field typography. */
-#entryPanel,#repeatModal .app-dialog,.loan-dialog{color-scheme:light}
+
+/* Unified dark dialogs, preserving every field's existing font-size and geometry. */
+#entryPanel.card,#repeatModal .repeat-modal-panel,.loan-overlay .loan-dialog{
+ background:#1e2e43!important;color:#e9eef5!important;border:1px solid #3a5068!important;
+ box-shadow:0 18px 55px #060e1b88!important;color-scheme:dark!important;
+}
+#entryPanel #formTitle,#repeatModal #repeatModalTitle,.loan-dialog #loanDialogTitle,
+#entryPanel h2,#repeatModal h2,.loan-dialog h2{color:#eef3f8!important}
+#entryPanel label,#repeatModal label,.loan-dialog label{color:#aab9c9!important}
+#entryPanel input:not([type=checkbox]),#entryPanel textarea,#entryPanel select,
+#repeatModal input:not([type=checkbox]),#repeatModal textarea,#repeatModal select,
+.loan-dialog input:not([type=checkbox]),.loan-dialog textarea,.loan-dialog select,
+#entryPanel .custom-select-trigger,#repeatModal .custom-select-trigger,
+.loan-dialog .loan-select-trigger,#entryPanel .custom-date-trigger,
+#repeatModal .custom-date-trigger,.loan-dialog .custom-date-trigger{
+ background:#273a50!important;border-color:#465d75!important;color:#e7eef6!important;
+ -webkit-text-fill-color:#e7eef6!important;
+}
+#entryPanel input::placeholder,#repeatModal input::placeholder,.loan-dialog input::placeholder{color:#8ea2b7!important;-webkit-text-fill-color:#8ea2b7!important}
+#entryPanel .custom-select-trigger span,#repeatModal .custom-select-trigger span,
+.loan-dialog .loan-select-trigger span,#entryPanel .custom-date-trigger span,
+#repeatModal .custom-date-trigger span,.loan-dialog .custom-date-trigger span{color:#e7eef6!important;-webkit-text-fill-color:#e7eef6!important}
+#entryPanel .custom-select-list,#repeatModal .custom-select-list,.loan-dialog .loan-select-list,
+#entryPanel .custom-select-option,#repeatModal .custom-select-option,.loan-dialog .loan-select-option{
+ background:#273a50!important;color:#e7eef6!important;border-color:#465d75!important;
+}
+#entryPanel .custom-select-option:hover,#repeatModal .custom-select-option:hover,
+.loan-dialog .loan-select-option:hover{background:#344b64!important}
+#entryPanel #cancelEntry,#repeatModal #closeRepeatModal,.loan-dialog #loanClose{
+ background:#34485f!important;color:#eaf0f6!important;
+}
+#entryPanel .primary,#repeatModal .primary,.loan-dialog .primary{background:#5b7692!important;color:#fff!important}
+#entryPanel .muted,#repeatModal .muted,.loan-dialog .muted,
+#entryPanel .hint,#repeatModal .hint,.loan-dialog .hint{color:#a6b5c6!important}
+#entryPanel .entry-delete-button{background:#503d4a!important;color:#f4b4b9!important}
+#entryPanel input[type=checkbox],#repeatModal input[type=checkbox],.loan-dialog input[type=checkbox]{accent-color:#8fa8bf}
+#entryPanel .custom-date-popup,#repeatModal .custom-date-popup,.loan-dialog .custom-date-popup{
+ background:#203248!important;color:#e7eef6!important;border:1px solid #435a72!important
+}
+/* Ensure the loader uses its aurora, not legacy receipt artwork. */
+#startupLoader .loader-hand-coins,#startupLoader .loader-receipt{display:none!important}
+#startupLoader .aurora-symbol{display:block!important;min-height:92px}
+#startupLoader #loadingPhrase{color:#d9e3ee!important}
+#startupLoader .apple-loader-track{display:block!important}
+
 </style></body></html>
