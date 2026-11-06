@@ -872,4 +872,13 @@ trigger.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(a
 #entryPanel #entryForm input:not([type="checkbox"]),#entryPanel #entryForm input:not([type="checkbox"])::placeholder,#entryPanel #entryForm textarea,
 #loanModal #loanForm input:not([type="checkbox"]),#loanModal #loanForm input:not([type="checkbox"])::placeholder,#loanModal #loanForm textarea,
 .loan-dialog #loanForm input:not([type="checkbox"]),.loan-dialog #loanForm textarea{font-size:10px!important;line-height:1.4!important;letter-spacing:0!important}
-</style></body></html>
+</style><script id="modal-typography-runtime-v1">
+/* Apply directly to the rendered controls, bypassing legacy selector conflicts. */
+(()=>{const selectors=[
+'#entryForm input:not([type="checkbox"])','#entryForm textarea','#entryForm .custom-select-trigger','#entryForm .custom-select-trigger span','#entryForm .custom-select-option','#entryForm .custom-date-trigger','#entryForm .custom-date-trigger span',
+'#repeatForm input:not([type="checkbox"])','#repeatForm textarea','#repeatForm .custom-select-trigger','#repeatForm .custom-select-trigger span','#repeatForm .custom-select-option','#repeatForm .app-native-trigger',
+'#loanForm input:not([type="checkbox"])','#loanForm textarea','#loanForm .loan-select-trigger','#loanForm .loan-select-trigger span','#loanForm .loan-select-option','#loanForm .custom-date-trigger','#loanForm .custom-date-trigger span'
+];const apply=()=>{document.querySelectorAll(selectors.join(',')).forEach(el=>{if(el.style.getPropertyValue('font-size')!=='10px'||el.style.getPropertyPriority('font-size')!=='important'){el.style.setProperty('font-size','10px','important');el.style.setProperty('letter-spacing','0','important')}})};
+apply();const observer=new MutationObserver(apply);observer.observe(document.body,{subtree:true,childList:true});window.addEventListener('pageshow',apply);
+})();
+</script></body></html>
