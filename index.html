@@ -866,4 +866,10 @@ trigger.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(a
 #repeatForm :is(input:not([type="checkbox"]),textarea,select,.custom-select-trigger,.custom-select-trigger span,.custom-select-list,.custom-select-option,.custom-date-trigger,.custom-date-trigger span,.app-native-trigger),
 #loanForm :is(input:not([type="checkbox"]),textarea,select,.loan-select-trigger,.loan-select-trigger span,.loan-select-list,.loan-select-option,.custom-date-trigger,.custom-date-trigger span){font-size:10px!important;line-height:1.4!important;letter-spacing:0!important;}
 #entryForm input::placeholder,#repeatForm input::placeholder,#loanForm input::placeholder{font-size:10px!important}
+</style><style id="modal-field-specificity-fix">
+/* Match specificity of legacy #repeatModal #repeatForm input rules. */
+#repeatModal #repeatForm input:not([type="checkbox"]),#repeatModal #repeatForm input:not([type="checkbox"])::placeholder,#repeatModal #repeatForm textarea,
+#entryPanel #entryForm input:not([type="checkbox"]),#entryPanel #entryForm input:not([type="checkbox"])::placeholder,#entryPanel #entryForm textarea,
+#loanModal #loanForm input:not([type="checkbox"]),#loanModal #loanForm input:not([type="checkbox"])::placeholder,#loanModal #loanForm textarea,
+.loan-dialog #loanForm input:not([type="checkbox"]),.loan-dialog #loanForm textarea{font-size:10px!important;line-height:1.4!important;letter-spacing:0!important}
 </style></body></html>
