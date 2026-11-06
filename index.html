@@ -471,7 +471,7 @@ render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.j
   const section=document.createElement('section');section.className='loan-group';
   const head=document.createElement('div');head.className='loan-group-head';
   const title=document.createElement('strong');title.textContent=group;
-  const subtotal=document.createElement('span');subtotal.textContent=money(members.reduce((sum,x)=>sum+balances[x.index],0));
+  const subtotal=document.createElement('span');const groupBalance=members.reduce((sum,x)=>sum+balances[x.index],0);const monthlyKnown=members.filter(x=>x.record.monthly!=null&&x.record.monthly!=='');const groupMonthly=monthlyKnown.reduce((sum,x)=>sum+Number(x.record.monthly||0),0);subtotal.textContent=money(groupBalance)+' / '+(monthlyKnown.length===members.length?money(groupMonthly):money(groupMonthly)+' (일부 미정)');subtotal.title='현재 대출 잔액 합계 / 월 납입금 합계';
   head.append(title,subtotal);
   if(group!=='미분류'){
    const rename=document.createElement('button');rename.type='button';rename.textContent='수정';rename.onclick=async()=>{const next=(await appAsk('그룹 이름',group))?.trim();if(next)window.budgetLoanAPI.renameGroup(group,next)};
