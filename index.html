@@ -461,6 +461,7 @@ render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.j
  const groups=window.budgetLoanAPI.groups();
  for(const group of groups){
   const members=records.map((record,index)=>({record,index})).filter(x=>(groups.includes(x.record.group)?x.record.group:'미분류')===group);
+  if(group==='미분류' && members.length===0)continue;
   const section=document.createElement('section');section.className='loan-group';
   const head=document.createElement('div');head.className='loan-group-head';
   const title=document.createElement('strong');title.textContent=group;
