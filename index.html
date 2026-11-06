@@ -859,15 +859,15 @@ trigger.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(a
 });document.addEventListener('click',e=>{if(active&&!active.trigger.closest('.loan-app-select')?.contains(e.target))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
 })();
 </script>
-<style id="modal-font-size-final-v5">
+<style id="modal-font-size-compact-v6">
 /* Compact, consistent text across popup inputs and dropdowns. */
 #entryPanel #entryForm input:not([type="checkbox"]),#entryPanel #entryForm textarea,#entryPanel #entryForm .custom-select-trigger,#entryPanel #entryForm .custom-select-trigger span,#entryPanel #entryForm .custom-select-option,#entryPanel #entryForm .custom-select-list button,#entryPanel #entryForm .custom-date-trigger,#entryPanel #entryForm .custom-date-trigger span,
 #repeatModal #repeatForm input:not([type="checkbox"]),#repeatModal #repeatForm textarea,#repeatModal #repeatForm .custom-select-trigger,#repeatModal #repeatForm .custom-select-trigger span,#repeatModal #repeatForm .custom-select-option,#repeatModal #repeatForm .custom-select-list button,#repeatModal #repeatForm .custom-date-trigger,#repeatModal #repeatForm .custom-date-trigger span,
-.loan-dialog #loanForm input:not([type="checkbox"]),.loan-dialog #loanForm textarea,.loan-dialog #loanForm .loan-select-trigger,.loan-dialog #loanForm .loan-select-trigger span,.loan-dialog #loanForm .loan-select-option,.loan-dialog #loanForm .custom-date-trigger,.loan-dialog #loanForm .custom-date-trigger span{font-size:12px!important;line-height:1.4!important;letter-spacing:0!important}
+.loan-dialog #loanForm input:not([type="checkbox"]),.loan-dialog #loanForm textarea,.loan-dialog #loanForm .loan-select-trigger,.loan-dialog #loanForm .loan-select-trigger span,.loan-dialog #loanForm .loan-select-option,.loan-dialog #loanForm .custom-date-trigger,.loan-dialog #loanForm .custom-date-trigger span{font-size:10px!important;line-height:1.4!important;letter-spacing:0!important}
 
 /* Ensure all descendant text and native selects use the same compact size. */
 #entryPanel #entryForm :is(input,textarea,select,button,.custom-select-trigger,.custom-select-option,.custom-date-trigger) :is(span,small),
 #repeatModal #repeatForm :is(input,textarea,select,button,.custom-select-trigger,.custom-select-option,.custom-date-trigger) :is(span,small),
 .loan-dialog #loanForm :is(input,textarea,select,button,.loan-select-trigger,.loan-select-option,.custom-date-trigger) :is(span,small),
-#entryPanel #entryForm select,#repeatModal #repeatForm select,.loan-dialog #loanForm select{font-size:12px!important}
+#entryPanel #entryForm select,#repeatModal #repeatForm select,.loan-dialog #loanForm select{font-size:10px!important}
 </style></body></html>
