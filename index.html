@@ -1562,4 +1562,18 @@ html body .repeat-month-shade .repeat-month-dialog button{
 html body .repeat-month-shade .repeat-month-dialog button[style*="#20466b"]{
  background:#436b95!important;border-color:#83a5c9!important;
 }
+</style><style id="loan-dates-text-only-v30">
+/* Only loan start and maturity date display text, not field geometry. */
+html body .loan-overlay .loan-dialog #loanForm label:has(input[name="loanStart"]) .custom-date-trigger,
+html body .loan-overlay .loan-dialog #loanForm label:has(input[name="maturity"]) .custom-date-trigger,
+html body .loan-overlay .loan-dialog #loanForm label:has(input[name="loanStart"]) .custom-date-trigger span,
+html body .loan-overlay .loan-dialog #loanForm label:has(input[name="maturity"]) .custom-date-trigger span{
+ font-size:10px!important;font-weight:400!important;letter-spacing:0!important;
+}
+html body .loan-overlay .loan-dialog #loanForm input[name="loanStart"],
+html body .loan-overlay .loan-dialog #loanForm input[name="maturity"],
+html body .loan-overlay .loan-dialog #loanForm input[name="loanStart"]::-webkit-datetime-edit,
+html body .loan-overlay .loan-dialog #loanForm input[name="maturity"]::-webkit-datetime-edit{
+ font-size:10px!important;font-weight:400!important;
+}
 </style></body></html>
