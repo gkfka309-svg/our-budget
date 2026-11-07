@@ -692,7 +692,7 @@ $('cloudForm').onsubmit=async e=>{e.preventDefault();cloudStatus('연결 중...'
 $('disconnect').onclick=()=>{token=null;refreshToken=null;clearInterval(poller);localStorage.removeItem('cbSession');localStorage.removeItem('coupleBudgetCloud');cfg=null;$('sbUrl').value='';$('sbKey').value='';$('room').value='';$('password').value='';cloudStatus('로그아웃했습니다. 현재 기기에는 마지막으로 동기화한 내역이 남아 있습니다.')};
 if(!cfg){$('sbUrl').value='https://sopiqwerixfobroxeafe.supabase.co';$('sbKey').value='sb_publishable_I1rRvsCqh3eVUICLQj4E_g_2Z7339zg';}
 if(cfg){$('sbUrl').value=cfg.url||'';$('sbKey').value=cfg.key||'';$('room').value=cfg.email||'';try{let session=JSON.parse(localStorage.getItem('cbSession')||'null');if(session){token=session.token;refreshToken=session.refreshToken;renew().then(ok=>{if(ok){remoteRead().then(()=>{lastSynced=JSON.parse(JSON.stringify(data));startPolling()})}else {token=null;refreshToken=null;localStorage.removeItem('cbSession');cloudStatus('로그인 기간이 만료되었습니다. 다시 로그인해 주세요.')}})}}catch{}}
-render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=12').then(reg=>{
+render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=13').then(reg=>{
  const check=()=>{if(navigator.onLine)reg.update().catch(()=>{})};
  check();
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)check()});
@@ -1612,4 +1612,10 @@ html body #startupLoader .loader-inner .aurora-wave svg{
 </style><style id="aurora-curtain-shape-v35">
 html body #startupLoader .loader-inner .aurora-wave{width:218px!important;height:172px!important;max-width:65vw!important;filter:none!important}
 html body #startupLoader .loader-inner .aurora-wave svg{width:100%!important;height:100%!important;filter:none!important}
-</style><style id="aurora-artwork-exact-v36">html body #startupLoader .loader-inner .aurora-wave{width:218px!important;height:218px!important;max-width:65vw!important;filter:none!important;overflow:visible!important;display:block!important}html body #startupLoader .loader-inner .aurora-wave img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;filter:none!important;transform:none!important;animation:none!important}</style></body></html>
+</style><style id="aurora-artwork-exact-v36">html body #startupLoader .loader-inner .aurora-wave{width:218px!important;height:218px!important;max-width:65vw!important;filter:none!important;overflow:visible!important;display:block!important}html body #startupLoader .loader-inner .aurora-wave img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;filter:none!important;transform:none!important;animation:none!important}</style><style id="aurora-loader-edge-blend-v37">
+/* Fade the square PNG boundary into the loader background without changing the home icon. */
+html body #startupLoader .loader-inner .aurora-wave img{
+ -webkit-mask-image:radial-gradient(ellipse 48% 47% at 50% 51%,#000 56%,rgba(0,0,0,.98) 66%,rgba(0,0,0,.72) 79%,transparent 100%)!important;
+ mask-image:radial-gradient(ellipse 48% 47% at 50% 51%,#000 56%,rgba(0,0,0,.98) 66%,rgba(0,0,0,.72) 79%,transparent 100%)!important;
+}
+</style></body></html>
