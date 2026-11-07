@@ -1358,4 +1358,58 @@ html body #repeatModal #repeatForm #repeatGroup option {
  background:#293e55!important;color:#e7eef7!important;
  -webkit-text-fill-color:#e7eef7!important;
 }
+</style><style id="modal-real-controls-fix-v13">
+/* Actual group/category/payment widgets are app-native-* wrappers, not native selects. */
+html body #entryPanel .app-native-trigger,
+html body #repeatModal .app-native-trigger{
+ display:flex!important;align-items:center!important;width:100%!important;min-height:42px!important;
+ background:#2b4057!important;background-color:#2b4057!important;
+ color:#e7eef7!important;-webkit-text-fill-color:#e7eef7!important;
+ border:1px solid #58718b!important;outline:0!important;box-shadow:none!important;
+ border-radius:10px!important;font-size:13px!important;
+}
+html body #entryPanel .app-native-trigger *,
+html body #repeatModal .app-native-trigger *{
+ color:#e7eef7!important;-webkit-text-fill-color:#e7eef7!important;opacity:1!important;
+}
+html body #entryPanel .app-native-trigger:focus,
+html body #repeatModal .app-native-trigger:focus{
+ border:1px solid #58718b!important;outline:none!important;box-shadow:none!important;
+}
+html body .app-native-menu{
+ background:#293e55!important;background-color:#293e55!important;
+ border:1px solid #58718b!important;outline:0!important;
+ box-shadow:0 12px 24px #0b162844!important;
+ border-radius:12px!important;color-scheme:dark!important;
+}
+html body .app-native-menu .app-native-option{
+ background:transparent!important;border:0!important;outline:0!important;
+ color:#e7eef7!important;-webkit-text-fill-color:#e7eef7!important;
+ font-size:13px!important;box-shadow:none!important;
+}
+html body .app-native-menu .app-native-option[aria-selected="true"],
+html body .app-native-menu .app-native-option:active{
+ background:#3a536d!important;
+}
+/* Fixed-expense add/edit: never fall back to white iOS focus fields. */
+html body #repeatModal .repeat-modal-panel #repeatForm input:not([type=checkbox]),
+html body #repeatModal .repeat-modal-panel #repeatForm input:not([type=checkbox]):focus,
+html body #repeatModal .repeat-modal-panel #repeatForm select,
+html body #repeatModal .repeat-modal-panel #repeatForm .app-native-trigger{
+ -webkit-appearance:none!important;appearance:none!important;
+ background:#2b4057!important;background-color:#2b4057!important;
+ color:#e7eef7!important;-webkit-text-fill-color:#e7eef7!important;
+ border:1px solid #58718b!important;outline:none!important;box-shadow:none!important;
+ border-radius:10px!important;
+}
+html body #repeatModal .repeat-modal-panel #repeatForm input::placeholder{
+ color:#9eb1c5!important;-webkit-text-fill-color:#9eb1c5!important;opacity:1!important;
+}
+html body #repeatModal .repeat-modal-panel{
+ max-height:calc(100dvh - 32px)!important;overflow-y:auto!important;
+ -webkit-overflow-scrolling:touch!important;scroll-padding-bottom:24px!important;
+}
+html body #repeatModal #repeatForm input:not([type=checkbox]){
+ font-size:16px!important;
+}
 </style></body></html>
