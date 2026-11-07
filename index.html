@@ -1167,4 +1167,38 @@ body #entryPanel #entryForm input[type=checkbox],body #repeatModal input[type=ch
 #startupLoader #loadingPhrase{order:3!important}
 @keyframes auroraFloat{from{transform:translateY(2px) scaleX(.985);opacity:.86}to{transform:translateY(-2px) scaleX(1.015);opacity:1}}
 @media(prefers-reduced-motion:reduce){#startupLoader .aurora-wave svg{animation:none!important}}
+</style><style id="modal-final-contrast-fix-20261107">
+/* Keep existing modal sizing; fix loan text contrast and group outline only. */
+body .loan-overlay #loanForm input,
+body .loan-overlay #loanForm textarea,
+body .loan-overlay #loanForm select,
+body .loan-overlay #loanForm .loan-select-trigger,
+body .loan-overlay #loanForm .loan-select-trigger *,
+body .loan-overlay #loanForm .loan-select-option{
+color:#eaf1f9!important;-webkit-text-fill-color:#eaf1f9!important;
+}
+body .loan-overlay #loanForm input::placeholder,
+body .loan-overlay #loanForm textarea::placeholder{color:#9eb1c5!important;-webkit-text-fill-color:#9eb1c5!important;opacity:1!important}
+body .loan-overlay #loanForm input[type="date"],
+body .loan-overlay #loanForm input[type="date"]::-webkit-datetime-edit,
+body .loan-overlay #loanForm input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+body .loan-overlay #loanForm input[type="date"]::-webkit-datetime-edit-text,
+body .loan-overlay #loanForm input[type="date"]::-webkit-datetime-edit-year-field,
+body .loan-overlay #loanForm input[type="date"]::-webkit-datetime-edit-month-field,
+body .loan-overlay #loanForm input[type="date"]::-webkit-datetime-edit-day-field{
+font-size:13px!important;font-weight:400!important;line-height:normal!important;color:#eaf1f9!important;-webkit-text-fill-color:#eaf1f9!important;
+}
+body .loan-overlay #loanForm input[type="date"]{min-width:0!important}
+body .loan-overlay #loanForm .loan-select-list{background:#263a50!important;border-color:#58718b!important}
+body .loan-overlay #loanForm .loan-select-option[aria-selected="true"]{background:#3b536d!important}
+body #entryPanel #entryForm .custom-select-trigger,
+body #entryPanel #entryForm .custom-select-trigger *,
+body #repeatModal .custom-select-trigger,
+body #repeatModal .custom-select-trigger *,
+body #entryPanel #entryForm .custom-select,
+body #repeatModal .custom-select{
+border-color:#58718b!important;box-shadow:none!important;
+}
+body #entryPanel #entryForm .custom-select-trigger,
+body #repeatModal .custom-select-trigger{outline-color:#58718b!important}
 </style></body></html>
