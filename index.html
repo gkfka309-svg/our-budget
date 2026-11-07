@@ -1494,4 +1494,18 @@ html body #repeatModal #repeatForm input::placeholder{
  document.addEventListener('click',e=>{if(e.target.closest('#openRepeatModal,#newRepeat,#addRepeat,#repeatModal'))requestAnimationFrame(apply)},true);
  apply();
 })();
-</script></body></html>
+</script><style id="repeat-final-specificity-v20">
+/* Higher specificity than the legacy v14 13px rules and earlier 16px mobile rules. */
+html body #repeatModal .repeat-modal-panel #repeatForm label{font-size:12px!important;line-height:1.4!important}
+html body #repeatModal .repeat-modal-panel #repeatForm input:not([type=checkbox]),
+html body #repeatModal .repeat-modal-panel #repeatForm input:not([type=checkbox]):focus,
+html body #repeatModal .repeat-modal-panel #repeatForm select,
+html body #repeatModal .repeat-modal-panel #repeatForm .app-native-trigger,
+html body #repeatModal .repeat-modal-panel #repeatForm .app-native-trigger span,
+html body #repeatModal .repeat-modal-panel #repeatForm .custom-date-trigger,
+html body #repeatModal .repeat-modal-panel #repeatForm .custom-date-trigger span,
+html body #repeatModal .repeat-modal-panel #repeatForm .custom-select-trigger,
+html body #repeatModal .repeat-modal-panel #repeatForm .custom-select-trigger span{
+font-size:12px!important;line-height:1.4!important;font-weight:400!important;letter-spacing:0!important;
+}
+</style></body></html>
