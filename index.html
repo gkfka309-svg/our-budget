@@ -1338,4 +1338,24 @@ html body #repeatModal #repeatForm .custom-select-list {
  box-shadow:0 12px 24px #0b162844!important;
  background:#293e55!important;
 }
+</style><style id="group-native-select-fix-v11">
+/* Group fields remain native select elements, unlike custom payment menus. */
+html body #entryPanel #entryForm #entryGroup,
+html body #repeatModal #repeatForm #repeatGroup {
+ appearance:none!important;-webkit-appearance:none!important;
+ background-color:#293e55!important;
+ color:#e7eef7!important;-webkit-text-fill-color:#e7eef7!important;
+ border:1px solid #58718b!important;
+ outline:none!important;box-shadow:none!important;
+ color-scheme:dark!important;
+}
+html body #entryPanel #entryForm #entryGroup:focus,
+html body #repeatModal #repeatForm #repeatGroup:focus {
+ border-color:#58718b!important;outline:none!important;box-shadow:none!important;
+}
+html body #entryPanel #entryForm #entryGroup option,
+html body #repeatModal #repeatForm #repeatGroup option {
+ background:#293e55!important;color:#e7eef7!important;
+ -webkit-text-fill-color:#e7eef7!important;
+}
 </style></body></html>
