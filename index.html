@@ -692,7 +692,7 @@ $('cloudForm').onsubmit=async e=>{e.preventDefault();cloudStatus('연결 중...'
 $('disconnect').onclick=()=>{token=null;refreshToken=null;clearInterval(poller);localStorage.removeItem('cbSession');localStorage.removeItem('coupleBudgetCloud');cfg=null;$('sbUrl').value='';$('sbKey').value='';$('room').value='';$('password').value='';cloudStatus('로그아웃했습니다. 현재 기기에는 마지막으로 동기화한 내역이 남아 있습니다.')};
 if(!cfg){$('sbUrl').value='https://sopiqwerixfobroxeafe.supabase.co';$('sbKey').value='sb_publishable_I1rRvsCqh3eVUICLQj4E_g_2Z7339zg';}
 if(cfg){$('sbUrl').value=cfg.url||'';$('sbKey').value=cfg.key||'';$('room').value=cfg.email||'';try{let session=JSON.parse(localStorage.getItem('cbSession')||'null');if(session){token=session.token;refreshToken=session.refreshToken;renew().then(ok=>{if(ok){remoteRead().then(()=>{lastSynced=JSON.parse(JSON.stringify(data));startPolling()})}else {token=null;refreshToken=null;localStorage.removeItem('cbSession');cloudStatus('로그인 기간이 만료되었습니다. 다시 로그인해 주세요.')}})}}catch{}}
-render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=16').then(reg=>{
+render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=17').then(reg=>{
  const check=()=>{if(navigator.onLine)reg.update().catch(()=>{})};
  check();
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)check()});
@@ -1612,14 +1612,47 @@ html body #startupLoader .loader-inner .aurora-wave svg{
 </style><style id="aurora-curtain-shape-v35">
 html body #startupLoader .loader-inner .aurora-wave{width:218px!important;height:172px!important;max-width:65vw!important;filter:none!important}
 html body #startupLoader .loader-inner .aurora-wave svg{width:100%!important;height:100%!important;filter:none!important}
-</style><style id="aurora-artwork-exact-v36">html body #startupLoader .loader-inner .aurora-wave{width:218px!important;height:218px!important;max-width:65vw!important;filter:none!important;overflow:visible!important;display:block!important}html body #startupLoader .loader-inner .aurora-wave img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;filter:none!important;transform:none!important;animation:none!important}</style><style id="aurora-loader-edge-feather-v40">
-/* Preserve the bright center of the original artwork, blend only the outer icon frame. */
+</style><style id="aurora-artwork-exact-v36">html body #startupLoader .loader-inner .aurora-wave{width:218px!important;height:218px!important;max-width:65vw!important;filter:none!important;overflow:visible!important;display:block!important}html body #startupLoader .loader-inner .aurora-wave img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;filter:none!important;transform:none!important;animation:none!important}</style><style id="aurora-loader-original-recolor-v41">
 html body #startupLoader{background:#101b2b!important}
-html body #startupLoader .loader-inner .aurora-wave{background:transparent!important;filter:none!important}
 html body #startupLoader .loader-inner .aurora-wave img{
- clip-path:none!important;
- mix-blend-mode:normal!important;
- -webkit-mask-image:radial-gradient(ellipse 66% 62% at 50% 52%,#000 0%,#000 48%,rgba(0,0,0,.96) 59%,rgba(0,0,0,.70) 72%,rgba(0,0,0,.25) 83%,transparent 95%)!important;
- mask-image:radial-gradient(ellipse 66% 62% at 50% 52%,#000 0%,#000 48%,rgba(0,0,0,.96) 59%,rgba(0,0,0,.70) 72%,rgba(0,0,0,.25) 83%,transparent 95%)!important;
+  -webkit-mask-image:none!important;mask-image:none!important;
+  mix-blend-mode:normal!important;filter:none!important;clip-path:none!important;
 }
-</style></body></html>
+</style>
+<script id="aurora-loader-original-recolor-script-v41">
+(function(){
+  function recolor(){
+    const img=document.querySelector('#startupLoader .aurora-wave img');
+    if(!img||img.dataset.recolored)return;
+    const source=new Image();
+    source.onload=function(){
+      try{
+        const c=document.createElement('canvas');
+        c.width=source.naturalWidth;c.height=source.naturalHeight;
+        const ctx=c.getContext('2d',{willReadFrequently:true});
+        ctx.drawImage(source,0,0);
+        const frame=ctx.getImageData(0,0,c.width,c.height),p=frame.data;
+        const w=c.width,h=c.height;
+        // Replace the dark rounded-square background, retaining the original aurora pixels.
+        for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+          const k=(y*w+x)*4,r=p[k],g=p[k+1],b=p[k+2];
+          const vivid=Math.max(r,g,b)-Math.min(r,g,b);
+          const light=Math.max(r,g,b);
+          // Original glow is brighter and more saturated than the icon's dark navy backdrop.
+          const glow=Math.max(0,Math.min(1,(light-62)/53))*Math.max(0,Math.min(1,(vivid-19)/34));
+          const a=glow*glow*(3-2*glow);
+          p[k]=Math.round(16*(1-a)+r*a);
+          p[k+1]=Math.round(27*(1-a)+g*a);
+          p[k+2]=Math.round(43*(1-a)+b*a);
+          p[k+3]=255;
+        }
+        ctx.putImageData(frame,0,0);
+        img.src=c.toDataURL('image/png');img.dataset.recolored='1';
+      }catch(e){}
+    };
+    source.src='./aurora_icon_new.png?v=17';
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',recolor);
+  else recolor();
+})();
+</script></body></html>
