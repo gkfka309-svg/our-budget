@@ -1055,4 +1055,53 @@ background:#21344a!important;color:#e7edf5!important;border-color:#4a6179!import
 .loan-group .loan-item{background:#293d53!important;border:1px solid #5a7087!important;color:#e9f0f7!important}
 .loan-group .loan-item:hover{background:#30465e!important}
 .fixed-group-header button,.loan-group-head button{background:#2c4159!important;color:#e7edf5!important}
+</style><style id="final-minimal-dark-v5">
+/* Approved minimal home: no tiles behind amounts, dates, or daily list. */
+#view-home>.card:not(#entryPanel),#view-home .summary,#view-home .summary>div,
+#view-home #calendar,#view-home #dayEntries,#view-home #dayEntries .entry{
+background:transparent!important;background-color:transparent!important;box-shadow:none!important;border:0!important}
+#view-home>.card:not(#entryPanel){padding:4px 0!important;border-radius:0!important}
+#view-home .summary{padding:8px 0 18px!important}
+#view-home .summary>div+div{border-left:0!important}
+#view-home #calendar .day,#view-home #calendar .day:not(.selected),#view-home #calendar .day.other,
+#view-home #calendar .day.selected{background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important}
+#view-home #calendar .day.selected>span:first-child{border-radius:50%!important;background:#7894ae!important;color:#112239!important}
+#view-home #calendar .day.today:not(.selected)>span:first-child{border-radius:50%!important}
+#view-home #dayEntries .entry{border-bottom:1px solid #33475e!important;border-radius:0!important;padding:12px 3px!important}
+#view-home #dayEntries .entry:last-child{border-bottom:0!important}
+#view-home #dayEntries .entry strong,#view-home #dayEntries .entry .amount{color:#e5edf6!important;-webkit-text-fill-color:#e5edf6!important}
+#view-home #dayEntries .entry small{color:#aabacc!important;-webkit-text-fill-color:#aabacc!important}
+#view-home #dayTitle,#view-home h2,#view-home .nav{color:#e5edf6!important}
+/* Statistics: visible numbers, subdued steel-blue bars, legible chart labels. */
+.weekly-row-top,.weekly-row-top strong,.weekly-footer,.weekly-footer strong,
+.weekly-month,.weekly-month strong,.weekly-card h2,.category-row,
+.category-row strong,.category-row span,.category-donut-label,
+#view-stats h2,#view-analysis h2{color:#dce7f2!important;-webkit-text-fill-color:#dce7f2!important}
+.weekly-row-top strong{color:#b9cfdf!important;-webkit-text-fill-color:#b9cfdf!important}
+.weekly-track{background:#35495f!important}
+.weekly-fixed{background:#738ba4!important}
+.weekly-regular{background:#94adbf!important}
+.weekly-filter,.weekly-filter label{color:#bdcbd9!important}
+.weekly-filter input{accent-color:#90a9c0!important;appearance:auto!important;-webkit-appearance:checkbox!important}
+.category-donut-center{background:#1d2c40!important;color:#e5edf6!important}
+.category-donut-center span,.category-donut-center strong{color:#dce7f2!important}
+.category-donut-layout svg text{fill:#b9cddd!important}
+.category-donut-layout .category-legend,.category-donut-layout .category-legend *{color:#b9cddd!important}
+/* All popup fields: muted slate, no white iOS-native inputs; do not touch sizing. */
+#entryPanel input:not([type=checkbox]),#entryPanel textarea,#entryPanel select,
+#repeatModal input:not([type=checkbox]),#repeatModal textarea,#repeatModal select,
+.loan-dialog input:not([type=checkbox]),.loan-dialog textarea,.loan-dialog select,
+#entryPanel .custom-select-trigger,#repeatModal .custom-select-trigger,.loan-dialog .loan-select-trigger{
+background:#2b4057!important;background-color:#2b4057!important;color:#e9f0f8!important;
+-webkit-text-fill-color:#e9f0f8!important;border:1px solid #58718b!important;
+box-shadow:none!important;color-scheme:dark!important}
+#entryPanel input[type=date],#repeatModal input[type=date],.loan-dialog input[type=date]{color-scheme:dark!important}
+#entryPanel input::placeholder,#entryPanel textarea::placeholder,
+#repeatModal input::placeholder,.loan-dialog input::placeholder{color:#9bafc3!important;-webkit-text-fill-color:#9bafc3!important}
+#entryPanel input[type=checkbox],#repeatModal input[type=checkbox],.loan-dialog input[type=checkbox]{
+appearance:auto!important;-webkit-appearance:checkbox!important;accent-color:#7894ae!important;background:transparent!important;color-scheme:dark!important}
+#entryPanel .custom-select-list,#repeatModal .custom-select-list,.loan-dialog .loan-select-list,
+#entryPanel .custom-select-option,#repeatModal .custom-select-option,.loan-dialog .loan-select-option{
+background:#2b4057!important;color:#e9f0f8!important}
+#entryPanel .custom-date-popup,#repeatModal .custom-date-popup,.loan-dialog .custom-date-popup{background:#24394e!important;color:#e9f0f8!important}
 </style></body></html>
