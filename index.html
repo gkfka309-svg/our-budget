@@ -1622,4 +1622,10 @@ html body #startupLoader .loader-inner .aurora-wave img{
  -webkit-mask-image:radial-gradient(ellipse 66% 62% at 50% 52%,#000 0%,#000 48%,rgba(0,0,0,.96) 59%,rgba(0,0,0,.70) 72%,rgba(0,0,0,.25) 83%,transparent 95%)!important;
  mask-image:radial-gradient(ellipse 66% 62% at 50% 52%,#000 0%,#000 48%,rgba(0,0,0,.96) 59%,rgba(0,0,0,.70) 72%,rgba(0,0,0,.25) 83%,transparent 95%)!important;
 }
+</style><style id="aurora-loader-dark-pixel-removal-v40">
+/* Darken only the source's navy enough that lighten blending discards its rounded-square backdrop. */
+html body #startupLoader .loader-inner .aurora-wave img{
+ mix-blend-mode:lighten!important;
+ filter:brightness(.68) contrast(1.45) saturate(1.5)!important;
+}
 </style></body></html>
