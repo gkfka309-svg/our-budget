@@ -936,7 +936,7 @@ function appNotice(message){return appDialog(message,'notice')}
   const refresh=()=>{text.textContent=select.selectedOptions[0]?.textContent||'선택'};
   select.addEventListener('change',refresh);select.addEventListener('input',refresh);new MutationObserver(refresh).observe(select,{childList:true,subtree:true});refresh();
   trigger.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(active?.trigger===trigger){close();return}close();
-   const menu=document.createElement('div');menu.className='app-native-menu';menu.setAttribute('role','listbox');
+   const menu=document.createElement('div');menu.className='app-native-menu'+((id==='entryGroup'||id==='repeatGroup')?' group-options-compact':'');menu.setAttribute('role','listbox');
    for(const opt of select.options){if(opt.disabled||opt.hidden)continue;const item=document.createElement('button');item.type='button';item.className='app-native-option';item.textContent=opt.textContent;item.setAttribute('aria-selected',String(opt.value===select.value));item.onclick=()=>{select.value=opt.value;select.dispatchEvent(new Event('change',{bubbles:true}));refresh();close()};menu.append(item)}
    document.body.append(menu);const rect=trigger.getBoundingClientRect(),below=innerHeight-rect.bottom-10,above=rect.top-10,up=below<150&&above>below;menu.style.left=Math.max(8,rect.left)+'px';menu.style.width=Math.min(rect.width,innerWidth-16)+'px';menu.style.maxHeight=Math.min(240,Math.max(70,up?above:below))+'px';if(up)menu.style.bottom=Math.max(8,innerHeight-rect.top+4)+'px';else menu.style.top=(rect.bottom+4)+'px';active={menu,trigger};trigger.setAttribute('aria-expanded','true');
   });
@@ -1591,5 +1591,12 @@ html body .loan-overlay .loan-dialog #loanForm #loanDelete:not(.hidden){
  -webkit-text-fill-color:#f4b4b9!important;
  border:0!important;
  opacity:1!important;
+}
+</style><style id="group-menu-options-compact-v33">
+/* Only the expanded group list (공동/하람/현우), not other dropdowns. */
+html body .app-native-menu.group-options-compact .app-native-option{
+ font-size:10px!important;
+ font-weight:400!important;
+ letter-spacing:0!important;
 }
 </style></body></html>
