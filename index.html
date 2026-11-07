@@ -800,7 +800,7 @@ render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.j
  const originalNew=document.getElementById('newBtn').onclick;
  document.getElementById('newBtn').onclick=function(e){activate('home');if(originalNew)originalNew.call(this,e)};
  const origCancel=document.getElementById('cancelEntry').onclick;
- document.getElementById('cancelEntry').onclick=function(e){if(origCancel)origCancel.call(this,e);activate('home')};
+ document.getElementById('cancelEntry').onclick=function(e){if(origCancel)origCancel.call(this,e)};
 })();
 </script><script>
 (function(){
@@ -1439,4 +1439,13 @@ html body #repeatModal #repeatForm .custom-date-trigger span {
  font-size:13px!important;font-weight:400!important;line-height:1.4!important;letter-spacing:0!important;
 }
 html body #repeatModal #repeatForm input::placeholder{font-size:13px!important;}
+</style><style id="repeat-compact-text-v17">
+/* Match the fixed-expense edit dialog's compact field text without altering layout. */
+html body #repeatModal #repeatForm :is(input,select,button.app-native-trigger,button.custom-select-trigger,button.custom-date-trigger),
+html body #repeatModal #repeatForm :is(input,select,button.app-native-trigger,button.custom-select-trigger,button.custom-date-trigger) span,
+html body #repeatModal #repeatForm .app-native-trigger .app-native-value,
+html body #repeatModal #repeatForm input[type=month] {
+ font-size:12px!important;font-weight:400!important;letter-spacing:0!important;
+}
+html body #repeatModal #repeatForm label {font-size:12px!important;}
 </style></body></html>
