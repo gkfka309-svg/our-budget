@@ -1473,4 +1473,25 @@ html body #repeatModal #repeatForm .custom-select-trigger span{
 html body #repeatModal #repeatForm input::placeholder{
  font-size:12px!important;
 }
-</style></body></html>
+</style><script id="repeat-match-entry-type-v19">
+/* Match the actual rendered edit-popup typography rather than guessing pixel sizes. */
+(function(){
+ const repeat=document.getElementById('repeatModal'),edit=document.getElementById('entryPanel');
+ if(!repeat||!edit)return;
+ function apply(){
+  if(repeat.classList.contains('hidden'))return;
+  const sourceLabel=edit.querySelector('#entryForm label');
+  const sourceInput=edit.querySelector('#entryForm input:not([type=checkbox]):not([type=hidden])');
+  const sourceSelect=edit.querySelector('#entryForm .app-native-trigger')||edit.querySelector('#entryForm select');
+  const labelSize=sourceLabel?getComputedStyle(sourceLabel).fontSize:'12px';
+  const inputSize=sourceInput?getComputedStyle(sourceInput).fontSize:'13px';
+  const selectSize=sourceSelect?getComputedStyle(sourceSelect).fontSize:inputSize;
+  repeat.querySelectorAll('#repeatForm label').forEach(el=>el.style.setProperty('font-size',labelSize,'important'));
+  repeat.querySelectorAll('#repeatForm input:not([type=checkbox]),#repeatForm input::placeholder').forEach(el=>el.style.setProperty('font-size',inputSize,'important'));
+  repeat.querySelectorAll('#repeatForm .app-native-trigger,#repeatForm .app-native-trigger span,#repeatForm .custom-select-trigger,#repeatForm .custom-select-trigger span,#repeatForm .custom-date-trigger,#repeatForm .custom-date-trigger span,#repeatForm select').forEach(el=>el.style.setProperty('font-size',selectSize,'important'));
+ }
+ new MutationObserver(apply).observe(repeat,{attributes:true,attributeFilter:['class']});
+ document.addEventListener('click',e=>{if(e.target.closest('#openRepeatModal,#newRepeat,#addRepeat,#repeatModal'))requestAnimationFrame(apply)},true);
+ apply();
+})();
+</script></body></html>
