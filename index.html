@@ -1612,14 +1612,16 @@ html body #startupLoader .loader-inner .aurora-wave svg{
 </style><style id="aurora-curtain-shape-v35">
 html body #startupLoader .loader-inner .aurora-wave{width:218px!important;height:172px!important;max-width:65vw!important;filter:none!important}
 html body #startupLoader .loader-inner .aurora-wave svg{width:100%!important;height:100%!important;filter:none!important}
-</style><style id="aurora-artwork-exact-v36">html body #startupLoader .loader-inner .aurora-wave{width:218px!important;height:218px!important;max-width:65vw!important;filter:none!important;overflow:visible!important;display:block!important}html body #startupLoader .loader-inner .aurora-wave img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;filter:none!important;transform:none!important;animation:none!important}</style><style id="aurora-loader-original-recolor-v41">
+</style><style id="aurora-artwork-exact-v36">html body #startupLoader .loader-inner .aurora-wave{width:218px!important;height:218px!important;max-width:65vw!important;filter:none!important;overflow:visible!important;display:block!important}html body #startupLoader .loader-inner .aurora-wave img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;filter:none!important;transform:none!important;animation:none!important}</style><style id="aurora-loader-recolor-v42">
 html body #startupLoader{background:#101b2b!important}
 html body #startupLoader .loader-inner .aurora-wave img{
+  visibility:hidden!important;
   -webkit-mask-image:none!important;mask-image:none!important;
   mix-blend-mode:normal!important;filter:none!important;clip-path:none!important;
 }
+html body #startupLoader .loader-inner .aurora-wave img[data-recolored="1"]{visibility:visible!important}
 </style>
-<script id="aurora-loader-original-recolor-script-v41">
+<script id="aurora-loader-recolor-script-v42">
 (function(){
   function recolor(){
     const img=document.querySelector('#startupLoader .aurora-wave img');
@@ -1633,24 +1635,41 @@ html body #startupLoader .loader-inner .aurora-wave img{
         ctx.drawImage(source,0,0);
         const frame=ctx.getImageData(0,0,c.width,c.height),p=frame.data;
         const w=c.width,h=c.height;
-        // Replace the dark rounded-square background, retaining the original aurora pixels.
-        for(let y=0;y<h;y++)for(let x=0;x<w;x++){
-          const k=(y*w+x)*4,r=p[k],g=p[k+1],b=p[k+2];
-          const vivid=Math.max(r,g,b)-Math.min(r,g,b);
-          const light=Math.max(r,g,b);
-          // Original glow is brighter and more saturated than the icon's dark navy backdrop.
+        const original=new Uint8ClampedArray(p);
+        const navy=[16,27,43];
+        function strength(r,g,b){
+          const vivid=Math.max(r,g,b)-Math.min(r,g,b),light=Math.max(r,g,b);
           const glow=Math.max(0,Math.min(1,(light-62)/53))*Math.max(0,Math.min(1,(vivid-19)/34));
-          const a=glow*glow*(3-2*glow);
-          p[k]=Math.round(16*(1-a)+r*a);
-          p[k+1]=Math.round(27*(1-a)+g*a);
-          p[k+2]=Math.round(43*(1-a)+b*a);
-          p[k+3]=255;
+          return glow*glow*(3-2*glow);
+        }
+        for(let y=0;y<h;y++)for(let x=0;x<w;x++){
+          const k=(y*w+x)*4,r=original[k],g=original[k+1],b=original[k+2];
+          const a=strength(r,g,b);
+          let R=navy[0]*(1-a)+r*a,G=navy[1]*(1-a)+g*a,B=navy[2]*(1-a)+b*a;
+          // Soft, faint upward extension from the original aurora; no changes to its wave shape.
+          if(y<h*.68){
+            let best=0,rr=0,gg=0,bb=0;
+            for(let d=12;d<=Math.round(h*.17);d+=8){
+              const sy=y+d;if(sy>=h)break;
+              const j=(sy*w+x)*4;
+              const sr=original[j],sg=original[j+1],sb=original[j+2];
+              const fade=Math.exp(-d/(h*.095))*.25;
+              const v=strength(sr,sg,sb)*fade;
+              if(v>best){best=v;rr=sr;gg=sg;bb=sb}
+            }
+            R=R*(1-best)+rr*best;
+            G=G*(1-best)+gg*best;
+            B=B*(1-best)+bb*best;
+          }
+          p[k]=Math.round(R);p[k+1]=Math.round(G);p[k+2]=Math.round(B);p[k+3]=255;
         }
         ctx.putImageData(frame,0,0);
-        img.src=c.toDataURL('image/png');img.dataset.recolored='1';
-      }catch(e){}
+        img.src=c.toDataURL('image/png');
+        img.dataset.recolored='1';
+      }catch(e){img.style.setProperty('visibility','visible','important')}
     };
-    source.src='./aurora_icon_new.png?v=17';
+    source.onerror=function(){img.style.setProperty('visibility','visible','important')};
+    source.src='./aurora_icon_new.png?v=18';
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',recolor);
   else recolor();
