@@ -1588,4 +1588,11 @@ html body #view-home .nav #next{
  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!overlay.hidden)close()});
 })();
-</script></body></html>
+</script><style id="home-summary-value-size-v28">
+/* Increase only the three monthly summary amounts by one step. */
+html body #view-home .summary strong,
+html body #view-home .summary strong[style],
+html body #view-home .summary b{
+ font-size:calc(1em + 2px)!important;
+}
+</style></body></html>
