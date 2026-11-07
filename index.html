@@ -1473,28 +1473,7 @@ html body #repeatModal #repeatForm .custom-select-trigger span{
 html body #repeatModal #repeatForm input::placeholder{
  font-size:12px!important;
 }
-</style><script id="repeat-match-entry-type-v19">
-/* Match the actual rendered edit-popup typography rather than guessing pixel sizes. */
-(function(){
- const repeat=document.getElementById('repeatModal'),edit=document.getElementById('entryPanel');
- if(!repeat||!edit)return;
- function apply(){
-  if(repeat.classList.contains('hidden'))return;
-  const sourceLabel=edit.querySelector('#entryForm label');
-  const sourceInput=edit.querySelector('#entryForm input:not([type=checkbox]):not([type=hidden])');
-  const sourceSelect=edit.querySelector('#entryForm .app-native-trigger')||edit.querySelector('#entryForm select');
-  const labelSize=sourceLabel?getComputedStyle(sourceLabel).fontSize:'12px';
-  const inputSize=sourceInput?getComputedStyle(sourceInput).fontSize:'13px';
-  const selectSize=sourceSelect?getComputedStyle(sourceSelect).fontSize:inputSize;
-  repeat.querySelectorAll('#repeatForm label').forEach(el=>el.style.setProperty('font-size',labelSize,'important'));
-  repeat.querySelectorAll('#repeatForm input:not([type=checkbox]),#repeatForm input::placeholder').forEach(el=>el.style.setProperty('font-size',inputSize,'important'));
-  repeat.querySelectorAll('#repeatForm .app-native-trigger,#repeatForm .app-native-trigger span,#repeatForm .custom-select-trigger,#repeatForm .custom-select-trigger span,#repeatForm .custom-date-trigger,#repeatForm .custom-date-trigger span,#repeatForm select').forEach(el=>el.style.setProperty('font-size',selectSize,'important'));
- }
- new MutationObserver(apply).observe(repeat,{attributes:true,attributeFilter:['class']});
- document.addEventListener('click',e=>{if(e.target.closest('#openRepeatModal,#newRepeat,#addRepeat,#repeatModal'))requestAnimationFrame(apply)},true);
- apply();
-})();
-</script><style id="repeat-final-specificity-v20">
+</style><style id="repeat-final-specificity-v20">
 /* Higher specificity than the legacy v14 13px rules and earlier 16px mobile rules. */
 html body #repeatModal .repeat-modal-panel #repeatForm label{font-size:12px!important;line-height:1.4!important}
 html body #repeatModal .repeat-modal-panel #repeatForm input:not([type=checkbox]),
@@ -1507,19 +1486,6 @@ html body #repeatModal .repeat-modal-panel #repeatForm .custom-date-trigger span
 html body #repeatModal .repeat-modal-panel #repeatForm .custom-select-trigger,
 html body #repeatModal .repeat-modal-panel #repeatForm .custom-select-trigger span{
 font-size:12px!important;line-height:1.4!important;font-weight:400!important;letter-spacing:0!important;
-}
-</style><style id="repeat-ios-no-zoom-v21">
-/* Avoid iOS Safari zooming the entire fixed-expense add dialog on input focus.
-   16px is the iOS minimum; visual compactness is kept on labels and picker buttons. */
-@media (pointer:coarse){
- html body #repeatModal .repeat-modal-panel #repeatForm input:not([type=checkbox]),
- html body #repeatModal .repeat-modal-panel #repeatForm input:not([type=checkbox]):focus,
- html body #repeatModal .repeat-modal-panel #repeatForm select{
- font-size:16px!important;
- }
- html body #repeatModal .repeat-modal-panel #repeatForm label{font-size:12px!important}
- html body #repeatModal .repeat-modal-panel #repeatForm .app-native-trigger,
- html body #repeatModal .repeat-modal-panel #repeatForm .app-native-trigger span{font-size:12px!important}
 }
 </style><style id="repeat-font-only-v22">
 /* Fixed expense ADD dialog only. Keep dimensions, order, color and behavior unchanged. */
@@ -1551,5 +1517,15 @@ html body #entryPanel #entryGroupField .app-native-select > .app-native-trigger 
 html body #repeatModal #repeatForm label:has(#repeatGroup) .app-native-select > .app-native-trigger,
 html body #repeatModal #repeatForm label:has(#repeatGroup) .app-native-select > .app-native-trigger > span:first-child{
  font-size:10px!important;
+}
+</style><style id="repeat-typed-text-match-placeholder-v25">
+/* Same text size for placeholder and user-entered values. */
+html body #repeatModal .repeat-modal-panel #repeatForm input:not([type=checkbox]),
+html body #repeatModal .repeat-modal-panel #repeatForm input:not([type=checkbox]):focus,
+html body #repeatModal .repeat-modal-panel #repeatForm input:not([type=checkbox]):not(:placeholder-shown){
+ font-size:11px!important;font-weight:400!important;line-height:1.4!important;
+}
+html body #repeatModal .repeat-modal-panel #repeatForm input::placeholder{
+ font-size:11px!important;font-weight:400!important;
 }
 </style></body></html>
