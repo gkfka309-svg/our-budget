@@ -1448,4 +1448,29 @@ html body #repeatModal #repeatForm input[type=month] {
  font-size:12px!important;font-weight:400!important;letter-spacing:0!important;
 }
 html body #repeatModal #repeatForm label {font-size:12px!important;}
+</style><style id="repeat-ios-text-scale-v18">
+/* iOS Safari text autosizing must not enlarge the add dialog independently. */
+html body #repeatModal,html body #repeatModal .repeat-modal-panel,
+html body #repeatModal #repeatForm,html body #repeatModal #repeatForm *{
+ -webkit-text-size-adjust:100%!important;text-size-adjust:100%!important;
+}
+html body #repeatModal #repeatForm label,
+html body #repeatModal #repeatForm label:not(.wide){
+ font-size:12px!important;line-height:1.4!important;font-weight:400!important;
+}
+html body #repeatModal #repeatForm input:not([type=checkbox]),
+html body #repeatModal #repeatForm input:not([type=checkbox]):focus,
+html body #repeatModal #repeatForm select,
+html body #repeatModal #repeatForm .app-native-select .app-native-trigger,
+html body #repeatModal #repeatForm .app-native-select .app-native-trigger span,
+html body #repeatModal #repeatForm .custom-date-trigger,
+html body #repeatModal #repeatForm .custom-date-trigger span,
+html body #repeatModal #repeatForm .custom-select-trigger,
+html body #repeatModal #repeatForm .custom-select-trigger span{
+ font-size:12px!important;line-height:1.4!important;font-weight:400!important;
+ letter-spacing:0!important;
+}
+html body #repeatModal #repeatForm input::placeholder{
+ font-size:12px!important;
+}
 </style></body></html>
