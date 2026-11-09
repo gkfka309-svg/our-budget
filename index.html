@@ -1865,4 +1865,18 @@ html body .loan-select-list .loan-select-option[aria-selected="true"] {
  background:#304357!important;
  background-color:#304357!important;
 }
+</style><style id="desktop-calendar-hover-outline-fix-v50">
+/* Desktop calendar: remove the rectangular hover/focus highlight;
+   keep the selected-day and today number circles intact. */
+@media (hover:hover) and (pointer:fine){
+ html body #view-home #calendar .day:hover,
+ html body #view-home #calendar .day:focus,
+ html body #view-home #calendar .day:focus-visible{
+  background:transparent!important;
+  background-color:transparent!important;
+  outline:none!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+ }
+}
 </style></body></html>
