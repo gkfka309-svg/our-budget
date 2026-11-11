@@ -692,7 +692,7 @@ $('cloudForm').onsubmit=async e=>{e.preventDefault();cloudStatus('연결 중...'
 $('disconnect').onclick=()=>{token=null;refreshToken=null;clearInterval(poller);localStorage.removeItem('cbSession');localStorage.removeItem('coupleBudgetCloud');cfg=null;$('sbUrl').value='';$('sbKey').value='';$('room').value='';$('password').value='';cloudStatus('로그아웃했습니다. 현재 기기에는 마지막으로 동기화한 내역이 남아 있습니다.')};
 if(!cfg){$('sbUrl').value='https://sopiqwerixfobroxeafe.supabase.co';$('sbKey').value='sb_publishable_I1rRvsCqh3eVUICLQj4E_g_2Z7339zg';}
 if(cfg){$('sbUrl').value=cfg.url||'';$('sbKey').value=cfg.key||'';$('room').value=cfg.email||'';try{let session=JSON.parse(localStorage.getItem('cbSession')||'null');if(session){token=session.token;refreshToken=session.refreshToken;renew().then(ok=>{if(ok){remoteRead().then(()=>{lastSynced=JSON.parse(JSON.stringify(data));startPolling()})}else {token=null;refreshToken=null;localStorage.removeItem('cbSession');cloudStatus('로그인 기간이 만료되었습니다. 다시 로그인해 주세요.')}})}}catch{}}
-render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=18').then(reg=>{
+render();if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=19').then(reg=>{
  const check=()=>{if(navigator.onLine)reg.update().catch(()=>{})};
  check();
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)check()});
@@ -932,7 +932,7 @@ function appNotice(message){return appDialog(message,'notice')}
   const select=document.getElementById(id);if(!select||select.closest('.custom-select'))continue;
   const wrap=document.createElement('div');wrap.className='app-native-select';select.parentNode.insertBefore(wrap,select);wrap.append(select);
   const trigger=document.createElement('button');trigger.type='button';trigger.className='app-native-trigger';trigger.setAttribute('aria-expanded','false');
-  const text=document.createElement('span'),arrow=document.createElement('span');arrow.textContent='⌄';trigger.append(text,arrow);wrap.append(trigger);
+  const text=document.createElement('span'),arrow=document.createElement('span');arrow.className='app-native-arrow';trigger.append(text,arrow);wrap.append(trigger);
   const refresh=()=>{text.textContent=select.selectedOptions[0]?.textContent||'선택'};
   select.addEventListener('change',refresh);select.addEventListener('input',refresh);new MutationObserver(refresh).observe(select,{childList:true,subtree:true});refresh();
   trigger.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(active?.trigger===trigger){close();return}close();
@@ -1938,4 +1938,105 @@ html body .loan-dialog #loanForm textarea:focus{
  else if(desktop.addListener)desktop.addListener(sync);
 })();
 </script>
+
+<style id="group-field-unified-fix-v54">
+/* Group selector: remove the hidden native select's ghost rectangle and
+   use a properly centered CSS chevron instead of the tiny text glyph. */
+html body #entryPanel #entryForm #entryGroupField > .app-native-select,
+html body #repeatModal .repeat-modal-panel #repeatForm label:has(#repeatGroup) > .app-native-select{
+ display:block!important;
+ position:relative!important;
+ width:100%!important;
+ min-width:0!important;
+ background:transparent!important;
+ border:0!important;
+ box-shadow:none!important;
+}
+html body #entryPanel #entryForm #entryGroupField > .app-native-select > select,
+html body #repeatModal .repeat-modal-panel #repeatForm label:has(#repeatGroup) > .app-native-select > select{
+ display:none!important;
+ visibility:hidden!important;
+ width:0!important;
+ height:0!important;
+ min-width:0!important;
+ max-width:0!important;
+ opacity:0!important;
+ pointer-events:none!important;
+}
+html body #entryPanel #entryForm #entryGroupField > .app-native-select > .app-native-trigger,
+html body #repeatModal .repeat-modal-panel #repeatForm label:has(#repeatGroup) > .app-native-select > .app-native-trigger{
+ display:flex!important;
+ align-items:center!important;
+ justify-content:space-between!important;
+ box-sizing:border-box!important;
+ width:100%!important;
+ min-height:41px!important;
+ height:41px!important;
+ padding:9px 11px!important;
+ margin:0!important;
+ border:1px solid #4b6075!important;
+ border-radius:10px!important;
+ background:#253241!important;
+ color:#eaf0f7!important;
+ -webkit-text-fill-color:#eaf0f7!important;
+ box-shadow:none!important;
+ outline:none!important;
+ line-height:1.4!important;
+ text-align:left!important;
+}
+html body #entryPanel #entryForm #entryGroupField > .app-native-select > .app-native-trigger > span:first-child,
+html body #repeatModal .repeat-modal-panel #repeatForm label:has(#repeatGroup) > .app-native-select > .app-native-trigger > span:first-child{
+ display:block!important;
+ flex:1 1 auto!important;
+ min-width:0!important;
+ margin:0!important;
+ padding:0!important;
+ color:#eaf0f7!important;
+ -webkit-text-fill-color:#eaf0f7!important;
+ font-size:10px!important;
+ font-weight:400!important;
+ line-height:1.4!important;
+ letter-spacing:0!important;
+}
+html body #entryPanel #entryForm #entryGroupField .app-native-arrow,
+html body #repeatModal .repeat-modal-panel #repeatForm label:has(#repeatGroup) .app-native-arrow{
+ display:block!important;
+ flex:0 0 8px!important;
+ width:8px!important;
+ height:8px!important;
+ margin: -4px 3px 0 10px!important;
+ padding:0!important;
+ border-right:1.5px solid #dce6f2!important;
+ border-bottom:1.5px solid #dce6f2!important;
+ background:transparent!important;
+ transform:rotate(45deg)!important;
+ line-height:0!important;
+ font-size:0!important;
+ box-sizing:border-box!important;
+}
+html body #entryPanel #entryForm #entryGroupField > .app-native-select > .app-native-trigger:focus,
+html body #entryPanel #entryForm #entryGroupField > .app-native-select > .app-native-trigger:focus-visible,
+html body #repeatModal .repeat-modal-panel #repeatForm label:has(#repeatGroup) > .app-native-select > .app-native-trigger:focus,
+html body #repeatModal .repeat-modal-panel #repeatForm label:has(#repeatGroup) > .app-native-select > .app-native-trigger:focus-visible{
+ outline:none!important;
+ box-shadow:0 0 0 1px #60788f!important;
+}
+@media(min-width:581px){
+ html body #entryPanel #entryForm #entryGroupField > .app-native-select > .app-native-trigger > span:first-child,
+ html body #repeatModal .repeat-modal-panel #repeatForm label:has(#repeatGroup) > .app-native-select > .app-native-trigger > span:first-child{
+  font-size:12px!important;
+ }
+ html body .app-native-menu.group-options-compact .app-native-option{
+  font-size:12px!important;
+  line-height:1.4!important;
+  padding:9px 12px!important;
+ }
+}
+@media(max-width:580px){
+ html body #entryPanel #entryForm #entryGroupField > .app-native-select > .app-native-trigger > span:first-child,
+ html body #repeatModal .repeat-modal-panel #repeatForm label:has(#repeatGroup) > .app-native-select > .app-native-trigger > span:first-child{
+  font-size:10px!important;
+ }
+}
+</style>
 </body></html>
